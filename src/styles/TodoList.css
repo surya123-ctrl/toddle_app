@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   margin: 20px;
   background-color: white;
@@ -10,7 +11,21 @@
   color: #717171;
 }
 .header button {
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  transition: 0.3s linear;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -ms-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+}
+.header button:hover {
+  background-color: black;
   color: white;
+}
+.logo {
+  width: 160px;
+  cursor: pointer;
 }
 .task-container {
   height: max-content;
@@ -18,7 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  background-color: #ebfcff;
+  /* background-color: #ebfcff; */
   padding: 40px 100px;
   /* border: 1px solid black; */
   margin-top: 15px;
@@ -27,5 +42,19 @@
 @media only screen and (max-width: 550px) {
   .task-container {
     justify-content: center;
+  }
+  .header {
+    font-size: 10px;
+  }
+  .logo {
+    width: 110px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

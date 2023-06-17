@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Card.css";
 import EditPost from "../modals/EditPost";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 const Card = ({ postObj, index, deletePost, updateArray }) => {
   const [modal, setModal] = useState(false);
 
@@ -16,6 +17,19 @@ const Card = ({ postObj, index, deletePost, updateArray }) => {
     // it will call function from todolist which will delete index of exisiting array
     deletePost(index);
   };
+  //managing like functionalities
+  const [like, setLike] = useState(false);
+  const [countLikes, setCountLikes] = useState(0);
+  const handleLikes = () => {
+    if (!like) {
+      setLike(true);
+      setCountLikes(countLikes + 1);
+    } else {
+      setLike(false);
+      setCountLikes(countLikes - 1);
+    }
+  };
+
   return (
     <div class="card-wrapper mr-5">
       <div class="task-holder">
@@ -24,10 +38,13 @@ const Card = ({ postObj, index, deletePost, updateArray }) => {
 
         <div
           style={{
-            position: "absolute",
-            right: "20px",
-            bottom: "20px",
-            margin: "10px",
+            // position: "absolute",
+            position: "sticky",
+            // right: "10px",
+            // bottom: "20px",
+            // margin: "10px",
+            // fontSize: "20px",
+            // padding: "13px",
           }}
         >
           <i
@@ -35,6 +52,20 @@ const Card = ({ postObj, index, deletePost, updateArray }) => {
             onClick={() => setModal(true)}
           ></i>
           <i class="fas fa-trash-alt option-button" onClick={handleDelete}></i>
+          {like ? (
+            <AiFillHeart
+              className="text-danger option-button"
+              style={{ fontSize: "30px", cursor: "pointer" }}
+              onClick={handleLikes}
+            />
+          ) : (
+            <AiOutlineHeart
+              className="option-button"
+              style={{ fontSize: "30px", cursor: "pointer" }}
+              onClick={handleLikes}
+            />
+          )}
+          <span className="display-likes">{countLikes}</span>
         </div>
       </div>
       <EditPost

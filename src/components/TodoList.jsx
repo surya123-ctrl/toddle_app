@@ -3,6 +3,7 @@ import "../styles/TodoList.css";
 import { IoAdd } from "react-icons/io5";
 import CreatePost from "../modals/CreatePost";
 import Card from "./Card";
+import logo from "./Group-1608.png";
 const TodoList = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -49,12 +50,12 @@ const TodoList = () => {
   return (
     <>
       <div className="header">
-        <h3 className="mt-3">toddle</h3>
-        <button
-          className="btn mt-2"
-          style={{ backgroundColor: "#D33852" }}
-          onClick={() => setModal(true)}
-        >
+        <img src={logo} alt="logo" className="logo"></img>
+        {/* <h3 className="mt-3">toddle</h3> */}
+
+        {/* <input id="searchInput" type="text" placeholder="Search"></input> */}
+
+        <button className="btn mt-2 create-post" onClick={() => setModal(true)}>
           <IoAdd /> Create new board
         </button>
       </div>
