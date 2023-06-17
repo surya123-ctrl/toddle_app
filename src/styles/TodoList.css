@@ -10,3 +10,11 @@
 .header button {
   color: white;
 }
+.task-container {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: #ebfcff; */
+  padding: 40px 100px;
+}

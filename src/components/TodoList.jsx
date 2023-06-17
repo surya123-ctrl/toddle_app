@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/TodoList.css";
 import { IoAdd } from "react-icons/io5";
 import CreatePost from "../modals/CreatePost";
-// import Card from "./Card";
+import Card from "./Card";
 const TodoList = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -28,6 +28,15 @@ const TodoList = () => {
       setPostList(obj);
     }
   }, []);
+
+  //delete function from card.jsx
+  const deletePost = (index) => {
+    let tempList = postList;
+    tempList.splice(index, 1);
+    localStorage.setItem("postList", JSON.stringify(tempList));
+    setPostList(tempList);
+    window.location.reload();
+  };
   return (
     <>
       <div className="header">
@@ -41,8 +50,15 @@ const TodoList = () => {
         </button>
       </div>
       <div className="task-container">
-        {/* {postList &&
-          postList.map((obj, index) => <Card postObject={obj} index={index} />)} */}
+        {postList &&
+          postList.map((obj, index) => (
+            <Card
+              Name={obj.Name}
+              Description={obj.Description}
+              index={index}
+              deletePost={deletePost}
+            />
+          ))}
       </div>
       <CreatePost toggle={toggle} modal={modal} save={savePost} />
     </>
