@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.header h3 {
+  color: #717171;
+}
+.header button {
+  color: white;
+}
