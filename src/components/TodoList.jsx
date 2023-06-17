@@ -37,6 +37,15 @@ const TodoList = () => {
     setPostList(tempList);
     window.location.reload();
   };
+  //editing post
+  const updateArray = (obj, index) => {
+    let tempList = postList;
+    console.log(tempList);
+    tempList[index] = obj;
+    setPostList(tempList);
+    localStorage.setItem("postList", JSON.stringify(tempList));
+    window.location.reload();
+  };
   return (
     <>
       <div className="header">
@@ -53,10 +62,10 @@ const TodoList = () => {
         {postList &&
           postList.map((obj, index) => (
             <Card
-              Name={obj.Name}
-              Description={obj.Description}
+              postObj={obj}
               index={index}
               deletePost={deletePost}
+              updateArray={updateArray}
             />
           ))}
       </div>

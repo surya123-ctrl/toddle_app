@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   margin: 20px;
+  background-color: white;
+  margin-bottom: 6px;
 }
 
 .header h3 {
@@ -11,10 +13,19 @@
   color: white;
 }
 .task-container {
-  height: 600px;
+  height: max-content;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  /* background-color: #ebfcff; */
+  position: absolute;
+  background-color: #ebfcff;
   padding: 40px 100px;
+  /* border: 1px solid black; */
+  margin-top: 15px;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 550px) {
+  .task-container {
+    justify-content: center;
+  }
 }

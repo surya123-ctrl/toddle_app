@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Card.css";
-// import { AiOutlineEdit } from "react-icons/ai";
-const Card = ({ Name, Description, index, deletePost }) => {
+import EditPost from "../modals/EditPost";
+const Card = ({ postObj, index, deletePost, updateArray }) => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
+  const updatePost = (obj) => {
+    updateArray(obj, index);
+  };
+
   const handleDelete = () => {
     // it will call function from todolist which will delete index of exisiting array
     deletePost(index);
@@ -9,8 +19,8 @@ const Card = ({ Name, Description, index, deletePost }) => {
   return (
     <div class="card-wrapper mr-5">
       <div class="task-holder">
-        <span class="card-header">{Name}</span>
-        <p className="mt-3">{Description}</p>
+        <span class="card-header">{postObj.Name}</span>
+        <p className="mt-3 card-para">{postObj.Description}</p>
 
         <div
           style={{
@@ -22,17 +32,17 @@ const Card = ({ Name, Description, index, deletePost }) => {
         >
           <i
             class="far fa-edit mr-3 option-button"
-            // onClick={() => setModal(true)}
+            onClick={() => setModal(true)}
           ></i>
           <i class="fas fa-trash-alt option-button" onClick={handleDelete}></i>
         </div>
       </div>
-      {/* <EditTask
+      <EditPost
         modal={modal}
         toggle={toggle}
-        updateTask={updateTask}
-        taskObj={taskObj}
-      /> */}
+        updatePost={updatePost}
+        postObj={postObj}
+      />
     </div>
   );
 };
