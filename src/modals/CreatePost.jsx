@@ -13,6 +13,10 @@ const CreatePost = ({ modal, toggle, save }) => {
   };
 
   const handleSave = () => {
+    if (postName.trim() === "" || description.trim() === "") {
+      alert("Please enter a title and description for the post.");
+      return;
+    }
     let postObject = {};
     postObject["Name"] = postName;
     postObject["Description"] = description;
