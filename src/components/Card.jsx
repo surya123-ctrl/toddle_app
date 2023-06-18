@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Card.css";
 import EditPost from "../modals/EditPost";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 const Card = ({ postObj, index, deletePost, updateArray }) => {
   const [modal, setModal] = useState(false);
 
@@ -27,6 +28,16 @@ const Card = ({ postObj, index, deletePost, updateArray }) => {
     } else {
       setLike(false);
       setCountLikes(countLikes - 1);
+    }
+  };
+
+  //managing bookmarks
+  const [bookmark, setBookmark] = useState(false);
+  const handleBookMark = () => {
+    if (!bookmark) {
+      setBookmark(true);
+    } else {
+      setBookmark(false);
     }
   };
 
@@ -66,6 +77,11 @@ const Card = ({ postObj, index, deletePost, updateArray }) => {
             />
           )}
           <span className="display-likes">{countLikes}</span>
+          {bookmark ? (
+            <BsBookmarkFill onClick={handleBookMark} />
+          ) : (
+            <BsBookmark onClick={handleBookMark} />
+          )}
         </div>
       </div>
       <EditPost

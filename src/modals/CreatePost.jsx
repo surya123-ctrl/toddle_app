@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "../styles/CreatePost.css";
 const CreatePost = ({ modal, toggle, save }) => {
   const [postName, setPostName] = useState(""); //to store the post name
   const [description, setDescription] = useState(""); //to store description
@@ -47,7 +48,7 @@ const CreatePost = ({ modal, toggle, save }) => {
             </div>
           </form>
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter className="modal-footer">
           <Button color="primary" onClick={handleSave}>
             Publish
           </Button>{" "}

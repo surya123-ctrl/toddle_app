@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/TodoList.css";
 import { IoAdd } from "react-icons/io5";
+// import { AiOutlineSearch } from "react-icons/ai";
 import CreatePost from "../modals/CreatePost";
 import Card from "./Card";
 import logo from "./Group-1608.png";
@@ -47,13 +48,21 @@ const TodoList = () => {
     localStorage.setItem("postList", JSON.stringify(tempList));
     window.location.reload();
   };
+  //search Functionalities
   return (
     <>
       <div className="header">
         <img src={logo} alt="logo" className="logo"></img>
         {/* <h3 className="mt-3">toddle</h3> */}
 
-        {/* <input id="searchInput" type="text" placeholder="Search"></input> */}
+        {/* <input
+          id="search-input"
+          className="search-input"
+          type="text"
+          placeholder="Search.." */}
+        {/* > */}
+        {/* <AiOutlineSearch /> */}
+        {/* </input> */}
 
         <button className="btn mt-2 create-post" onClick={() => setModal(true)}>
           <IoAdd /> Create new board

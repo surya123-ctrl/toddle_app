@@ -27,6 +27,17 @@
   width: 160px;
   cursor: pointer;
 }
+.search-input {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  outline: none;
+  border: 1px solid gray;
+  width: 30%;
+  padding: 10px;
+}
 .task-container {
   height: max-content;
   width: 100%;

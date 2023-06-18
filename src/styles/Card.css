@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  /* position: absolute; */
   /*border: 1px solid rgb(211, 56, 82);
   */
   border-radius: 15px;
@@ -21,7 +22,6 @@
   -moz-transition: 0.6s linear;
   -ms-transition: 0.6s linear;
   -o-transition: 0.6s linear;
-
   overflow-y: scroll;
 }
 .card-wrapper:hover {
@@ -35,8 +35,8 @@
 }
 
 .task-holder {
-  width: 100%;
-  height: 98%;
+  /* width: 100%;
+  height: 98%; */
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -64,6 +64,7 @@
   margin-right: 10px;
   cursor: pointer;
   padding-right: 5px;
+  font-size: 15px;
 }
 .display-likes {
   margin-left: -13px;
@@ -72,11 +73,30 @@
   position: absolute;
   font-weight: 400;
 }
+@media only screen and (max-width: 460px) {
+  .card-wrapper {
+    width: 30%;
+  }
+  .task-container {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .card-header {
+    font-size: 15px;
+  }
+  .card-para {
+    font-size: 10px;
+  }
+  .card-wrapper {
+    height: 300px;
+  }
+}
 @media only screen and (max-width: 550px) {
   .task-container {
     justify-content: center;
   }
-  .task-holder {
-    width: 200px;
+  .card-wrapper {
+    width: max-content;
   }
 }
