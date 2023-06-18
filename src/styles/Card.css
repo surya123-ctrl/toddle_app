@@ -100,3 +100,11 @@
     width: max-content;
   }
 }
+@media only screen and (max-width: 470px) {
+  .task-container {
+    padding: 0;
+  }
+  .card-wrapper {
+    width: 90%;
+  }
+}

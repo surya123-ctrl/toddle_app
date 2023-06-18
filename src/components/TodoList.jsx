@@ -19,6 +19,7 @@ const TodoList = () => {
     localStorage.setItem("postList", JSON.stringify(tempList)); //pushing data to local storage and then will fetch using useEffect
     setPostList(tempList);
     setModal(false);
+    window.location.reload();
   };
 
   //fetching list from local storage
@@ -49,28 +50,45 @@ const TodoList = () => {
     window.location.reload();
   };
   //search Functionalities
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  useEffect(() => {
+    let arr = localStorage.getItem("postList");
+    if (arr) {
+      let obj = JSON.parse(arr);
+      setPostList(obj);
+
+      // Filter the posts based on the search value
+      const filtered = obj.filter((post) =>
+        post.Name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredPosts(filtered);
+    }
+  }, [searchValue]);
+
   return (
     <>
       <div className="header">
         <img src={logo} alt="logo" className="logo"></img>
         {/* <h3 className="mt-3">toddle</h3> */}
 
-        {/* <input
+        <input
           id="search-input"
           className="search-input"
           type="text"
-          placeholder="Search.." */}
-        {/* > */}
-        {/* <AiOutlineSearch /> */}
-        {/* </input> */}
+          placeholder="Search.."
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
 
         <button className="btn mt-2 create-post" onClick={() => setModal(true)}>
           <IoAdd /> Create new board
         </button>
       </div>
       <div className="task-container">
-        {postList &&
-          postList.map((obj, index) => (
+        {filteredPosts &&
+          filteredPosts.map((obj, index) => (
             <Card
               postObj={obj}
               index={index}
